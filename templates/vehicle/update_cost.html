@@ -1,0 +1,112 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+    .cost-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .cost-card {
+        max-width: 650px;
+        margin: 40px auto;
+        padding: 36px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+
+    .cost-card h3 {
+        margin: 0 0 10px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .cost-card h3 span {
+        color: #3b82f6;
+    }
+
+    .cost-card p {
+        text-align: center;
+        margin: 0 0 30px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 9px;
+        color: #bfdbfe;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    input[type=text],
+    input[type=number],
+    select,
+    textarea {
+        width: 100%;
+        padding: 15px 16px;
+        border: 1px solid #334155;
+        background: #020817;
+        color: #ffffff;
+        border-radius: 14px;
+        outline: none;
+        font-size: 15px;
+    }
+
+    input[type=text]:focus,
+    input[type=number]:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+    }
+
+    input[type=submit] {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 14px 30px rgba(59, 130, 246, 0.35);
+    }
+
+    input[type=submit]:hover {
+        opacity: 0.95;
+        transform: translateY(-1px);
+    }
+</style>
+
+<div class="cost-page">
+    <div class="cost-card">
+        <h3>Update <span>Service Cost</span></h3>
+        <p>Set the repair cost for the selected DriveCore service request.</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="cost">Repair Cost</label>
+                {% render_field updateCostForm.cost placeholder="Repair Cost" %}
+            </div>
+
+            <input type="submit" value="Update Cost">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

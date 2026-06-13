@@ -1,0 +1,122 @@
+{% extends 'vehicle/customerbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+  .request-page {
+    padding: 36px;
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #020817, #0b1f45, #123f91);
+    color: #ffffff;
+  }
+
+  .request-card {
+    max-width: 850px;
+    margin: 0 auto;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    border-radius: 26px;
+    padding: 34px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.38);
+  }
+
+  .request-card h1 {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .request-card h1 span {
+    color: #3b82f6;
+  }
+
+  .request-subtitle {
+    text-align: center;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+  }
+
+  .request-card label {
+    display: block;
+    margin: 16px 0 8px;
+    color: #dbeafe;
+    font-weight: 700;
+  }
+
+  .request-card input[type="text"],
+  .request-card input[type="number"],
+  .request-card select,
+  .request-card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #334155;
+    background: #020817;
+    color: #ffffff;
+    border-radius: 14px;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .request-card textarea {
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  .request-card input:focus,
+  .request-card select:focus,
+  .request-card textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+  }
+
+  .request-card input[type="submit"] {
+    width: 100%;
+    margin-top: 24px;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 14px 32px rgba(59, 130, 246, 0.35);
+  }
+
+  .request-card input[type="submit"]:hover {
+    opacity: 0.94;
+    transform: translateY(-1px);
+  }
+</style>
+
+<div class="request-page">
+  <form method="post" class="request-card">
+    {% csrf_token %}
+
+    <h1>Make <span>Request</span></h1>
+    <p class="request-subtitle">Submit your vehicle breakdown or repair request</p>
+
+    <label>Vehicle Category</label>
+    {% render_field enquiry.category class="form-control" %}
+
+    <label>Vehicle Number</label>
+    {% render_field enquiry.vehicle_no class="form-control" placeholder="Vehicle Number" %}
+
+    <label>Vehicle Name</label>
+    {% render_field enquiry.vehicle_name class="form-control" placeholder="Vehicle Name" %}
+
+    <label>Vehicle Brand</label>
+    {% render_field enquiry.vehicle_brand class="form-control" placeholder="Vehicle Brand" %}
+
+    <label>Vehicle Model</label>
+    {% render_field enquiry.vehicle_model class="form-control" placeholder="Vehicle Model" %}
+
+    <label>Problem Description</label>
+    {% render_field enquiry.problem_description class="form-control" placeholder="Describe the issue" %}
+
+    <input type="submit" value="Submit Request">
+  </form>
+</div>
+
+{% endblock content %}

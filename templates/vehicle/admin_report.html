@@ -1,0 +1,124 @@
+{% extends 'vehicle/adminbase.html' %}
+{% block content %}
+
+<style>
+    .report-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .report-title {
+        margin-bottom: 26px;
+    }
+
+    .report-title h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .report-title span {
+        color: #3b82f6;
+    }
+
+    .report-title p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .report-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        overflow: hidden;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .report-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .report-table th {
+        background: rgba(37, 99, 235, 0.22);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .report-table td {
+        padding: 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+    }
+
+    .report-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .cost-badge {
+        display: inline-block;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.16);
+        color: #93c5fd;
+        font-weight: 800;
+    }
+
+    .empty-row {
+        text-align: center;
+        padding: 28px;
+        color: #94a3b8;
+    }
+</style>
+
+<div class="report-page">
+
+    <div class="report-title">
+        <h2>Service <span>Report</span></h2>
+        <p>Track completed vehicle service records and repair costs.</p>
+    </div>
+
+    <div class="report-card">
+        <div class="table-responsive">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Vehicle Name</th>
+                        <th>Vehicle Number</th>
+                        <th>Date</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for r in reports %}
+                    <tr>
+                        <td>{{ r.vehicle_name }}</td>
+                        <td>{{ r.vehicle_no }}</td>
+                        <td>{{ r.date }}</td>
+                        <td><span class="cost-badge">Rs. {{ r.cost }}</span></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="empty-row">No report records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

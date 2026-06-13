@@ -1,0 +1,160 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .salary-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .salary-header {
+        margin-bottom: 26px;
+    }
+
+    .salary-header h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .salary-header span {
+        color: #3b82f6;
+    }
+
+    .salary-header p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .salary-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        overflow: hidden;
+    }
+
+    .salary-card-header {
+        padding: 22px 26px;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .salary-card-header h3 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .salary-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .salary-table th {
+        background: rgba(37, 99, 235, 0.18);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .salary-table td {
+        padding: 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 15px;
+    }
+
+    .salary-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .salary-amount {
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .edit-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        box-shadow: 0 10px 24px rgba(59, 130, 246, 0.28);
+        transition: 0.25s ease;
+    }
+
+    .edit-btn:hover {
+        transform: translateY(-2px);
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="salary-page">
+
+    <div class="salary-header">
+        <h2>Mechanic <span>Salary</span></h2>
+        <p>Manage mechanic salary details for DriveCore service operations.</p>
+    </div>
+
+    <div class="salary-card">
+        <div class="salary-card-header">
+            <h3>Mechanic & Salary Records</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="salary-table">
+                <thead>
+                    <tr>
+                        <th>Mechanic Name</th>
+                        <th>Salary</th>
+                        <th>Update Salary</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for m in mechanics %}
+                    <tr>
+                        <td>{{ m.get_name }}</td>
+                        <td class="salary-amount">Rs. {{ m.salary }}</td>
+                        <td>
+                            <a class="edit-btn" href="{% url 'update-salary' m.id %}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="empty-row">No mechanic salary records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

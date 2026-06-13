@@ -1,0 +1,131 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .attendance-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .attendance-title {
+        margin-bottom: 28px;
+    }
+
+    .attendance-title h2 {
+        font-size: 30px;
+        font-weight: 900;
+        margin: 0;
+        color: #ffffff;
+    }
+
+    .attendance-title span {
+        color: #3b82f6;
+    }
+
+    .attendance-title p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .attendance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 24px;
+        max-width: 950px;
+    }
+
+    .attendance-card {
+        display: block;
+        padding: 34px;
+        min-height: 190px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.25s ease;
+    }
+
+    .attendance-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(96, 165, 250, 0.55);
+        box-shadow: 0 24px 55px rgba(37, 99, 235, 0.28);
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .attendance-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+        box-shadow: 0 14px 28px rgba(59, 130, 246, 0.32);
+    }
+
+    .attendance-icon i {
+        font-size: 28px;
+        color: #ffffff;
+    }
+
+    .attendance-card h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .attendance-card p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .attendance-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .attendance-page {
+            padding: 22px;
+        }
+    }
+</style>
+
+<div class="attendance-page">
+
+    <div class="attendance-title">
+        <h2>Mechanic <span>Attendance</span></h2>
+        <p>Manage mechanic attendance records for DriveCore roadside support operations.</p>
+    </div>
+
+    <div class="attendance-grid">
+
+        <a href="/admin-view-attendance" class="attendance-card">
+            <div class="attendance-icon">
+                <i class="fas fa-eye"></i>
+            </div>
+            <h3>View Mechanic Attendance</h3>
+            <p>Check existing attendance records of registered mechanics.</p>
+        </a>
+
+        <a href="/admin-take-attendance" class="attendance-card">
+            <div class="attendance-icon">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <h3>Take Mechanic Attendance</h3>
+            <p>Mark new attendance for available mechanics.</p>
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DriveCore | Customer</title>
+
+  <link rel="stylesheet" href="{% static 'fontawesome-free/css/all.min.css' %}">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+    }
+
+    .customer-hero {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.25), transparent 35%),
+        linear-gradient(135deg, #020617 0%, #081225 40%, #0B1E45 75%, #123A92 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 20px 80px;
+    }
+
+    .customer-card {
+      width: 100%;
+      max-width: 950px;
+      padding: 70px 55px;
+      text-align: center;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(15, 23, 42, 0.92));
+      border: 1px solid rgba(96, 165, 250, 0.28);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+    }
+
+    .customer-icon {
+      width: 95px;
+      height: 95px;
+      margin: 0 auto 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.35);
+    }
+
+    .customer-icon i {
+      font-size: 46px;
+      color: #60A5FA;
+    }
+
+    .customer-card h1 {
+      font-size: 64px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .customer-card h1 span {
+      background: linear-gradient(to right, #60A5FA, #2563EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .customer-card .subtitle {
+      font-size: 22px;
+      color: #CBD5E1;
+      margin-bottom: 25px;
+    }
+
+    .customer-card .info {
+      font-size: 18px;
+      color: #E2E8F0;
+      margin-bottom: 42px;
+      line-height: 1.7;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .action-buttons a {
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.38);
+    }
+
+    .btn-outline-custom {
+      border: 1px solid rgba(96, 165, 250, 0.55);
+      color: #DBEAFE;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .action-buttons a:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .btn-outline-custom:hover {
+      background: white;
+      color: #0B1120;
+    }
+
+    @media(max-width: 768px) {
+      .customer-card {
+        padding: 50px 25px;
+      }
+
+      .customer-card h1 {
+        font-size: 38px;
+      }
+
+      .customer-card .subtitle {
+        font-size: 18px;
+      }
+
+      .customer-card .info {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <section class="customer-hero">
+    <div class="customer-card">
+
+      <div class="customer-icon">
+        <i class="fas fa-car"></i>
+      </div>
+
+      <h1>Hello, <span>Customer</span></h1>
+
+      <p class="subtitle">
+        Welcome to DriveCore Vehicle Breakdown Assistance
+      </p>
+
+      <p class="info">
+        Create your account, request emergency vehicle help, and connect with trusted mechanics near you.
+      </p>
+
+      <div class="action-buttons">
+        <a class="btn-primary-custom" href="/customersignup">Create Your Account</a>
+        <a class="btn-outline-custom" href="/customerlogin">Login</a>
+      </div>
+
+    </div>
+  </section>
+
+  {% include "vehicle/footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    .drive-footer {
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.28), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #081225 45%, #0B1E45 100%);
+      color: white;
+      padding: 70px 0 0;
+      border-top: 1px solid rgba(96, 165, 250, 0.22);
+    }
+
+    .footer-logo img {
+      width: 170px;
+      margin-bottom: 18px;
+    }
+
+    .footer-about {
+      color: #CBD5E1;
+      line-height: 1.8;
+      font-size: 15px;
+      max-width: 360px;
+    }
+
+    .footer-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 22px;
+      color: #fff;
+    }
+
+    .footer-links a,
+    .footer-contact p {
+      display: block;
+      color: #CBD5E1;
+      text-decoration: none;
+      margin-bottom: 12px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #60A5FA;
+      transform: translateX(5px);
+    }
+
+    .footer-contact i {
+      color: #60A5FA;
+      margin-right: 10px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(96,165,250,0.25);
+      color: #DBEAFE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #2563EB;
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .newsletter-box {
+      display: flex;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(96,165,250,0.25);
+      border-radius: 50px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .newsletter-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 14px 18px;
+      background: transparent;
+      color: white;
+    }
+
+    .newsletter-box input::placeholder {
+      color: #CBD5E1;
+    }
+
+    .newsletter-box button {
+      border: none;
+      padding: 0 22px;
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      margin-top: 55px;
+      padding: 22px 0;
+      text-align: center;
+      border-top: 1px solid rgba(96,165,250,0.18);
+      color: #CBD5E1;
+      font-size: 14px;
+    }
+
+    @media(max-width: 768px) {
+      .footer-col {
+        margin-bottom: 35px;
+      }
+
+      .newsletter-box {
+        flex-direction: column;
+        border-radius: 18px;
+      }
+
+      .newsletter-box button {
+        padding: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <footer class="drive-footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 footer-col">
+          <div class="footer-logo">
+            <img src="{% static 'images/2.png' %}" alt="DriveCore Logo">
+          </div>
+
+          <p class="footer-about">
+            DriveCore provides fast and reliable vehicle breakdown assistance,
+            connecting customers with trusted mechanics for emergency support.
+          </p>
+
+          <div class="social-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-whatsapp"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-col">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/customer">Customer</a>
+            <a href="/mechanics">Mechanics</a>
+            <a href="/service">Services</a>
+            <a href="/aboutus">About Us</a>
+            <a href="/contactus">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-col">
+          <h4 class="footer-title">Contact Info</h4>
+          <div class="footer-contact">
+            <p><i class="fa fa-map-marker"></i> Karachi, Pakistan</p>
+            <p><i class="fa fa-phone"></i> +92 341 0124412</p>
+            <p><i class="fa fa-phone"></i> +92 345 2154673</p>
+            <p><i class="fa fa-envelope"></i> mmuzammilansar@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-col">
+          <h4 class="footer-title">Newsletter</h4>
+          <p class="footer-about">
+            Subscribe for service updates and emergency support information.
+          </p>
+
+          <form class="newsletter-box">
+            <input type="email" placeholder="Enter email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      Copyright © 2026 DriveCore. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

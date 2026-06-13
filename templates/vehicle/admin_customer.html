@@ -1,0 +1,121 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .dc-page {
+    padding: 34px;
+    min-height: calc(100vh - 70px);
+    background: transparent;
+  }
+
+  .dc-title {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 26px;
+  }
+
+  .dc-title span {
+    color: #3b82f6;
+  }
+
+  .dc-action-card {
+    display: block;
+    min-height: 165px;
+    padding: 28px;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    margin-bottom: 26px;
+    transition: 0.25s ease;
+  }
+
+  .dc-action-card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+    box-shadow: 0 24px 55px rgba(59, 130, 246, 0.22);
+    text-decoration: none;
+  }
+
+  .dc-card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: rgba(59, 130, 246, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+
+  .dc-card-icon i,
+  .dc-card-icon span {
+    color: #60a5fa;
+    font-size: 28px;
+    font-weight: 900;
+  }
+
+  .dc-action-card h6 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .dc-action-card p {
+    color: #94a3b8;
+    font-size: 14px;
+    margin: 8px 0 0;
+  }
+</style>
+
+<div class="dc-page">
+  <div class="dc-title">Customer <span>Management</span></div>
+
+  <div class="row">
+    <div class="col-md-4 col-xl-3">
+      <a href="/admin-view-customer" class="dc-action-card">
+        <div class="dc-card-icon">
+          <i class="fas fa-eye"></i>
+        </div>
+        <h6>View All Customers</h6>
+        <p>Check registered customer records</p>
+      </a>
+    </div>
+
+    <div class="col-md-4 col-xl-3">
+      <a href="/admin-add-customer" class="dc-action-card">
+        <div class="dc-card-icon">
+          <i class="fas fa-plus-circle"></i>
+        </div>
+        <h6>Add Customer</h6>
+        <p>Create a new customer profile</p>
+      </a>
+    </div>
+
+    <div class="col-md-4 col-xl-3">
+      <a href="/admin-view-customer-enquiry" class="dc-action-card">
+        <div class="dc-card-icon">
+          <i class="fas fa-car-crash"></i>
+        </div>
+        <h6>Customer Enquiries</h6>
+        <p>View service and repair requests</p>
+      </a>
+    </div>
+
+    <div class="col-md-4 col-xl-3">
+      <a href="/admin-view-customer-invoice" class="dc-action-card">
+        <div class="dc-card-icon">
+          <span>Rs</span>
+        </div>
+        <h6>Customer Invoices</h6>
+        <p>Review customer billing details</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,134 @@
+{% extends 'vehicle/mechanicbase.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .mechanic-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .salary-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        padding: 30px;
+        margin-bottom: 28px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+
+    .salary-card h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .salary-card span {
+        color: #60a5fa;
+    }
+
+    .table-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+
+    .table-header {
+        padding: 22px 26px;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .table-header h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .table-header p {
+        margin: 6px 0 0;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .drive-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .drive-table th {
+        background: rgba(37, 99, 235, 0.18);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .drive-table td {
+        padding: 15px 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+    }
+
+    .drive-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="mechanic-page">
+
+    <div class="salary-card">
+        <h1>Your Salary: <span>{{ mechanic.salary }}</span></h1>
+    </div>
+
+    <div class="table-card">
+        <div class="table-header">
+            <h3>Vehicles You Have Repaired</h3>
+            <p>Your completed DriveCore repair records</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="drive-table">
+                <thead>
+                    <tr>
+                        <th>Vehicle Name</th>
+                        <th>Number</th>
+                        <th>Problem Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for w in workdone %}
+                    <tr>
+                        <td>{{ w.vehicle_name }}</td>
+                        <td>{{ w.vehicle_no }}</td>
+                        <td>{{ w.problem_description }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="empty-row">No repaired vehicles found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

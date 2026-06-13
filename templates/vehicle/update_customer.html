@@ -1,0 +1,113 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+  .dc-form-page {
+    padding: 36px;
+    min-height: calc(100vh - 70px);
+  }
+
+  .dc-form-card {
+    max-width: 850px;
+    margin: 0 auto;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    border-radius: 24px;
+    padding: 34px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+  }
+
+  .dc-form-card h3 {
+    margin: 0 0 26px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 900;
+  }
+
+  .dc-form-card h3 span {
+    color: #3b82f6;
+  }
+
+  .dc-form-card label {
+    color: #cbd5e1;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .dc-form-card input,
+  .dc-form-card select,
+  .dc-form-card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    background: #020817;
+    color: #ffffff;
+    outline: none;
+  }
+
+  .dc-form-card input:focus,
+  .dc-form-card select:focus,
+  .dc-form-card textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+  }
+
+  .dc-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 14px 30px rgba(59, 130, 246, 0.35);
+  }
+
+  .dc-submit:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+  }
+</style>
+
+<div class="dc-form-page">
+  <div class="dc-form-card">
+    <h3>Update <span>Customer</span></h3>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <label>First Name</label>
+      {% render_field userForm.first_name placeholder="First Name" %}
+
+      <label>Last Name</label>
+      {% render_field userForm.last_name placeholder="Last Name" %}
+
+      <label>Mobile</label>
+      {% render_field customerForm.mobile placeholder="Mobile" %}
+
+      <label>Address</label>
+      {% render_field customerForm.address placeholder="Address" %}
+
+      <label>Username</label>
+      {% render_field userForm.username placeholder="Username" %}
+
+      <label>Password</label>
+      {% render_field userForm.password placeholder="Password" %}
+
+      <label>Profile Picture</label>
+      {% render_field customerForm.profile_pic placeholder="Profile Picture" %}
+
+      <button type="submit" class="dc-submit">Update Customer</button>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

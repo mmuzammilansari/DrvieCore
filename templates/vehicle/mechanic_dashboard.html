@@ -1,0 +1,142 @@
+{% extends 'vehicle/mechanicbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .mechanic-dashboard {
+        padding: 34px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .mechanic-title {
+        margin-bottom: 26px;
+    }
+
+    .mechanic-title h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    .mechanic-title span {
+        color: #3b82f6;
+    }
+
+    .mechanic-title p {
+        margin-top: 8px;
+        color: #cbd5e1;
+    }
+
+    .mechanic-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 22px;
+        padding: 26px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        text-align: center;
+        min-height: 170px;
+    }
+
+    .mechanic-card i {
+        font-size: 34px;
+        color: #60a5fa;
+        margin-bottom: 14px;
+    }
+
+    .mechanic-card h3 {
+        font-size: 34px;
+        margin: 8px 0;
+        color: #ffffff;
+        font-weight: 900;
+    }
+
+    .mechanic-card p {
+        margin: 0;
+        color: #cbd5e1;
+        font-weight: 700;
+    }
+
+    .brand-strip {
+        margin-top: 38px;
+        background: rgba(15, 23, 42, 0.88);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        padding: 22px;
+        overflow: hidden;
+    }
+
+    .brand-strip h3 {
+        margin: 0 0 18px;
+        color: #ffffff;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .brand-strip marquee img {
+        margin-right: 34px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 14px rgba(0,0,0,0.35));
+    }
+</style>
+
+<div class="mechanic-dashboard">
+
+    <div class="mechanic-title">
+        <h2>Mechanic <span>Dashboard</span></h2>
+        <p>Track assigned work, progress, completed jobs, and salary overview.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="mechanic-card">
+                <i class="fas fa-tasks"></i>
+                <h3>{{ new_work_assigned }}</h3>
+                <p>New Work Assigned</p>
+            </div>
+        </div>
+
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="mechanic-card">
+                <i class="fas fa-spinner"></i>
+                <h3>{{ work_in_progress }}</h3>
+                <p>Work In Progress</p>
+            </div>
+        </div>
+
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="mechanic-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>{{ work_completed }}</h3>
+                <p>Work Completed</p>
+            </div>
+        </div>
+
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="mechanic-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>{{ salary }}</h3>
+                <p>Salary</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="brand-strip">
+        <h3>Supported Vehicle Brands</h3>
+
+        <marquee behavior="scroll" direction="left">
+            <img src="{% static 'images/ferrari.png' %}" width="120" height="80" alt="ferrari">
+            <img src="{% static 'images/ford.png' %}" width="120" height="80" alt="ford">
+            <img src="{% static 'images/lambo.png' %}" width="120" height="80" alt="lambo">
+            <img src="{% static 'images/mahindra.png' %}" width="120" height="80" alt="mahindra">
+            <img src="{% static 'images/tvs.png' %}" width="120" height="80" alt="tvs">
+            <img src="{% static 'images/tata.png' %}" width="120" height="80" alt="tata">
+            <img src="{% static 'images/hero.png' %}" width="120" height="80" alt="hero">
+            <img src="{% static 'images/rolls.png' %}" width="120" height="80" alt="rolls">
+            <img src="{% static 'images/suzuki.png' %}" width="120" height="80" alt="suzuki">
+        </marquee>
+    </div>
+
+</div>
+
+{% endblock content %}

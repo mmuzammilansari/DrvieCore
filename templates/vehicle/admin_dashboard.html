@@ -1,0 +1,196 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	.drive-wrapper {
+		padding: 34px;
+		background: transparent;
+		min-height: calc(100vh - 70px);
+		color: #fff;
+	}
+
+	.dashboard-title {
+		font-size: 30px;
+		font-weight: 900;
+		margin-bottom: 24px;
+		color: #ffffff;
+	}
+
+	.dashboard-title span {
+		color: #3b82f6;
+	}
+
+	.drive-card {
+		background: rgba(15, 23, 42, 0.95);
+		border: 1px solid rgba(96, 165, 250, 0.25);
+		border-radius: 22px;
+		padding: 26px;
+		box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+		text-align: center;
+	}
+
+	.drive-card i {
+		font-size: 34px;
+		color: #60a5fa;
+		margin-bottom: 14px;
+	}
+
+	.drive-card h3 {
+		font-size: 34px;
+		margin: 8px 0;
+		color: #ffffff;
+	}
+
+	.drive-card p {
+		margin: 0;
+		color: #cbd5e1;
+		font-weight: 700;
+	}
+
+	.table-card {
+		margin-top: 28px;
+		width: 100%;
+		background: rgba(15, 23, 42, 0.96);
+		border: 1px solid rgba(96, 165, 250, 0.25);
+		border-radius: 24px;
+		box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+		overflow: hidden;
+	}
+
+	.table-header {
+		padding: 22px 26px;
+		border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+	}
+
+	.table-header h3 {
+		margin: 0;
+		color: #ffffff;
+		font-size: 22px;
+		font-weight: 800;
+	}
+
+	.table-header p {
+		margin: 6px 0 0;
+		color: #94a3b8;
+		font-size: 14px;
+	}
+
+	.table-responsive {
+		overflow-x: auto;
+	}
+
+	.drive-table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	.drive-table th {
+		background: rgba(37, 99, 235, 0.18);
+		color: #bfdbfe;
+		padding: 16px;
+		text-align: left;
+		font-size: 14px;
+		white-space: nowrap;
+	}
+
+	.drive-table td {
+		padding: 15px 16px;
+		color: #e5e7eb;
+		border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+		font-size: 14px;
+	}
+
+	.drive-table tr:hover {
+		background: rgba(59, 130, 246, 0.08);
+	}
+
+	.empty-row {
+		text-align: center;
+		color: #94a3b8;
+		padding: 28px;
+	}
+</style>
+
+<div class="drive-wrapper">
+
+	<div class="dashboard-title">
+		Drive<span>Core</span> Admin Dashboard
+	</div>
+
+	<div class="row">
+		<div class="col-3 col-m-6 col-sm-6">
+			<div class="drive-card">
+				<i class="fas fa-users"></i>
+				<h3>{{ total_customer }}</h3>
+				<p>Total Customers</p>
+			</div>
+		</div>
+
+		<div class="col-3 col-m-6 col-sm-6">
+			<div class="drive-card">
+				<i class="fas fa-tools"></i>
+				<h3>{{ total_mechanic }}</h3>
+				<p>Total Mechanics</p>
+			</div>
+		</div>
+
+		<div class="col-3 col-m-6 col-sm-6">
+			<div class="drive-card">
+				<i class="fas fa-car-crash"></i>
+				<h3>{{ total_request }}</h3>
+				<p>Total Enquiries</p>
+			</div>
+		</div>
+
+		<div class="col-3 col-m-6 col-sm-6">
+			<div class="drive-card">
+				<i class="fas fa-comments"></i>
+				<h3>{{ total_feedback }}</h3>
+				<p>Total Feedback</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-card">
+		<div class="table-header">
+			<h3>Recent Customer Enquiries</h3>
+			<p>Latest vehicle breakdown and repair requests</p>
+		</div>
+
+		<div class="table-responsive">
+			<table class="drive-table">
+				<thead>
+					<tr>
+						<th>Customer Name</th>
+						<th>Vehicle Name</th>
+						<th>Category</th>
+						<th>Vehicle Model</th>
+						<th>Vehicle Brand</th>
+						<th>Problem Description</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for c,r in data %}
+					<tr>
+						<td>{{ c.get_name }}</td>
+						<td>{{ r.vehicle_name }}</td>
+						<td>{{ r.category }}</td>
+						<td>{{ r.vehicle_model }}</td>
+						<td>{{ r.vehicle_brand }}</td>
+						<td>{{ r.problem_description }}</td>
+					</tr>
+					{% empty %}
+					<tr>
+						<td colspan="6" class="empty-row">No recent enquiries found</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock content %}

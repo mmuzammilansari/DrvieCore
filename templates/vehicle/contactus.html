@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #020817, #0b1f45, #123f91);
+      color: #ffffff;
+    }
+
+    .feedback-section {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .feedback-card {
+      width: 100%;
+      max-width: 620px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      border-radius: 26px;
+      padding: 38px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.42);
+    }
+
+    .feedback-card h2 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .feedback-card h2 span {
+      color: #3b82f6;
+    }
+
+    .feedback-card p {
+      text-align: center;
+      color: #cbd5e1;
+      margin: 12px 0 30px;
+    }
+
+    .feedback-card label {
+      color: #bfdbfe;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .feedback-card input,
+    .feedback-card textarea,
+    .feedback-card select {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      border: 1px solid #334155;
+      background: #020817;
+      color: #ffffff;
+      outline: none;
+    }
+
+    .feedback-card textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .feedback-card input:focus,
+    .feedback-card textarea:focus,
+    .feedback-card select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+    }
+
+    .feedback-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(59, 130, 246, 0.32);
+    }
+
+    .feedback-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <section class="feedback-section">
+    <div class="feedback-card">
+      <h2>Send Your <span>Feedback</span></h2>
+      <p>Help DriveCore improve roadside assistance and vehicle service support.</p>
+
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="feedback-btn">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  {% include "vehicle/footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Signup | DriveCore</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.25), transparent 35%),
+        linear-gradient(135deg, #020617 0%, #081225 40%, #0B1E45 75%, #123A92 100%);
+      color: white;
+    }
+
+    .signup-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 20px;
+    }
+
+    .signup-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 45px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(15, 23, 42, 0.94));
+      border: 1px solid rgba(96, 165, 250, 0.28);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(18px);
+      text-align: center;
+    }
+
+    .signup-card h1 {
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+       color: rgba(255, 255, 255, 0.756);
+    }
+
+    .signup-card h1 span {
+      color: #60A5FA;
+    }
+
+    .signup-card p {
+      color: #CBD5E1;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 16px;
+      padding: 0 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: #CBD5E1;
+    }
+
+    .form-control:focus {
+      border-color: #60A5FA;
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .file-label {
+      display: block;
+      text-align: left;
+      color: #E2E8F0;
+      font-weight: 600;
+      margin: 8px 0 10px;
+      font-size: 14px;
+    }
+
+    input[type="file"].form-control {
+      padding: 12px;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 15px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.38);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.50);
+    }
+
+    @media(max-width: 600px) {
+      .signup-card {
+        padding: 35px 22px;
+      }
+
+      .signup-card h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <section class="signup-section">
+    <form class="signup-card" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <h1>Customer <span>Signup</span></h1>
+      <p>Create your DriveCore account to request vehicle assistance.</p>
+
+      {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
+      {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
+      {% render_field userForm.username class="form-control" placeholder="Username" %}
+      {% render_field userForm.password class="form-control" placeholder="Password" %}
+      {% render_field customerForm.address class="form-control" placeholder="Address" %}
+      {% render_field customerForm.mobile class="form-control" placeholder="Mobile Number" %}
+
+      <label class="file-label">Profile Picture</label>
+      {% render_field customerForm.profile_pic class="form-control" %}
+
+      <input class="submit-btn" type="submit" value="Create Account">
+    </form>
+  </section>
+
+  {% include "vehicle/footer.html" %}
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+{% extends 'vehicle/adminbase.html' %}
+{% block content %}
+
+<style>
+    .report-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .report-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        overflow: hidden;
+    }
+
+    .report-header {
+        padding: 24px 28px;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .report-header h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    .report-header span {
+        color: #3b82f6;
+    }
+
+    .report-header p {
+        margin: 8px 0 0;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .drive-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .drive-table th {
+        background: rgba(37, 99, 235, 0.18);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .drive-table td {
+        padding: 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+    }
+
+    .drive-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .cost-badge {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.18);
+        color: #93c5fd;
+        font-weight: 800;
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="report-page">
+    <div class="report-card">
+        <div class="report-header">
+            <h3>Customer <span>Billing Report</span></h3>
+            <p>Customer-wise total service cost summary</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="drive-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Total Cost</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for c,r in data %}
+                    <tr>
+                        <td>{{ c.get_name }}</td>
+                        <td>
+                            <span class="cost-badge">Rs. {{ r.cost__sum }}</span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" class="empty-row">No billing records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

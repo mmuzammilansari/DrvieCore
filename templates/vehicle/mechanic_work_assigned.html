@@ -1,0 +1,176 @@
+{% extends 'vehicle/mechanicbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .mechanic-work-page {
+        padding: 34px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .page-title {
+        margin-bottom: 26px;
+    }
+
+    .page-title h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .page-title span {
+        color: #3b82f6;
+    }
+
+    .page-title p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .work-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        overflow: hidden;
+    }
+
+    .work-card-header {
+        padding: 22px 26px;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.22);
+    }
+
+    .work-card-header h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .drive-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .drive-table th {
+        background: rgba(37, 99, 235, 0.18);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .drive-table td {
+        padding: 15px 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+        vertical-align: top;
+    }
+
+    .drive-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.16);
+        color: #93c5fd;
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .update-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff !important;
+        text-decoration: none;
+        font-size: 17px;
+        box-shadow: 0 12px 24px rgba(59, 130, 246, 0.28);
+    }
+
+    .update-btn:hover {
+        transform: translateY(-2px);
+        text-decoration: none;
+        color: #ffffff !important;
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="mechanic-work-page">
+
+    <div class="page-title">
+        <h2>Vehicle <span>Repair Jobs</span></h2>
+        <p>View assigned vehicles and update their repair status.</p>
+    </div>
+
+    <div class="work-card">
+        <div class="work-card-header">
+            <h3>Vehicles To Repair & Update Status</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="drive-table">
+                <thead>
+                    <tr>
+                        <th>Vehicle Name</th>
+                        <th>Category</th>
+                        <th>Number</th>
+                        <th>Model</th>
+                        <th>Brand</th>
+                        <th>Problem Description</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for w in works %}
+                    <tr>
+                        <td>{{ w.vehicle_name }}</td>
+                        <td>{{ w.category }}</td>
+                        <td>{{ w.vehicle_no }}</td>
+                        <td>{{ w.vehicle_model }}</td>
+                        <td>{{ w.vehicle_brand }}</td>
+                        <td>{{ w.problem_description }}</td>
+                        <td><span class="status-badge">{{ w.status }}</span></td>
+                        <td>
+                            <a class="update-btn" href="{% url 'mechanic-update-status' w.id %}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="empty-row">No assigned repair jobs found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

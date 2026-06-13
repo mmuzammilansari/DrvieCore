@@ -1,0 +1,163 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .mechanic-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .mechanic-title {
+        margin-bottom: 28px;
+    }
+
+    .mechanic-title h2 {
+        font-size: 30px;
+        font-weight: 900;
+        margin: 0;
+        color: #ffffff;
+    }
+
+    .mechanic-title span {
+        color: #3b82f6;
+    }
+
+    .mechanic-title p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .mechanic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(240px, 1fr));
+        gap: 24px;
+        max-width: 1180px;
+    }
+
+    .mechanic-card {
+        display: block;
+        padding: 30px;
+        min-height: 185px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.25s ease;
+    }
+
+    .mechanic-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(96, 165, 250, 0.55);
+        box-shadow: 0 24px 55px rgba(37, 99, 235, 0.28);
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .mechanic-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+        box-shadow: 0 14px 28px rgba(59, 130, 246, 0.32);
+    }
+
+    .mechanic-icon i,
+    .mechanic-icon span {
+        font-size: 28px;
+        color: #ffffff;
+        font-weight: 900;
+    }
+
+    .mechanic-card h3 {
+        margin: 0 0 10px;
+        font-size: 21px;
+        font-weight: 800;
+    }
+
+    .mechanic-card p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+        .mechanic-grid {
+            grid-template-columns: repeat(2, minmax(240px, 1fr));
+        }
+    }
+
+    @media (max-width: 640px) {
+        .mechanic-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .mechanic-page {
+            padding: 22px;
+        }
+    }
+</style>
+
+<div class="mechanic-page">
+
+    <div class="mechanic-title">
+        <h2>Mechanic <span>Management</span></h2>
+        <p>Manage mechanics, approvals, salary records, and attendance for DriveCore operations.</p>
+    </div>
+
+    <div class="mechanic-grid">
+
+        <a href="/admin-view-mechanic" class="mechanic-card">
+            <div class="mechanic-icon">
+                <i class="fas fa-eye"></i>
+            </div>
+            <h3>View All Mechanics</h3>
+            <p>See all registered mechanics available in the system.</p>
+        </a>
+
+        <a href="/admin-add-mechanic" class="mechanic-card">
+            <div class="mechanic-icon">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <h3>Add Mechanic</h3>
+            <p>Create a new mechanic profile for roadside service support.</p>
+        </a>
+
+        <a href="/admin-approve-mechanic" class="mechanic-card">
+            <div class="mechanic-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Approve Mechanic</h3>
+            <p>Review and approve pending mechanic registrations.</p>
+        </a>
+
+        <a href="/admin-view-mechanic-salary" class="mechanic-card">
+            <div class="mechanic-icon">
+                <span>Rs</span>
+            </div>
+            <h3>View Mechanic Salary</h3>
+            <p>Check mechanic salary and payment-related records.</p>
+        </a>
+
+        <a href="/admin-mechanic-attendance" class="mechanic-card">
+            <div class="mechanic-icon">
+                <i class="fas fa-calendar-week"></i>
+            </div>
+            <h3>Mechanic Attendance</h3>
+            <p>View or mark attendance for registered mechanics.</p>
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock content %}

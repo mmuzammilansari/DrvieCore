@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DriveCore</title>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      overflow-x: hidden;
+      color: white;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.25), transparent 35%),
+        linear-gradient(135deg, #020617 0%, #081225 35%, #0B1E45 70%, #123A92 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 70px 20px;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(37, 99, 235, 0.15);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -150px;
+      right: -100px;
+    }
+
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(59, 130, 246, 0.15);
+      filter: blur(120px);
+      border-radius: 50%;
+      bottom: -120px;
+      left: -80px;
+    }
+
+    .hero-wrapper {
+      width: 100%;
+      max-width: 1250px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 65px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      line-height: 1.1;
+             color: rgba(255, 255, 255, 0.756);
+
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #60A5FA, #2563EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+    }
+
+    .hero-subtitle {
+      max-width: 750px;
+      margin: auto;
+      font-size: 20px;
+      line-height: 1.7;
+      color: #CBD5E1;
+      margin-bottom: 70px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 35px;
+    }
+
+    .service-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 420px;
+      padding: 45px;
+      text-align: left;
+      background:
+        linear-gradient(135deg,
+          rgba(37, 99, 235, 0.30),
+          rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      backdrop-filter: blur(18px);
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      transition: 0.4s ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right,
+          rgba(59, 130, 246, 0.35),
+          transparent 40%);
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow:
+        0 35px 80px rgba(37, 99, 235, 0.30),
+        inset 0 1px 1px rgba(255, 255, 255, 0.10);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .icon-box {
+      width: 85px;
+      height: 85px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    }
+
+    .icon-box i {
+      font-size: 40px;
+      color: #60A5FA;
+    }
+
+    .service-card h2 {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      line-height: 1.2;
+             color: rgba(255, 255, 255, 0.756);
+
+    }
+
+    .service-card p {
+      font-size: 18px;
+      color: #E2E8F0;
+      line-height: 1.8;
+      margin-bottom: 35px;
+      max-width: 500px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      padding: 16px 34px;
+      border-radius: 50px;
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.50);
+    }
+
+    .btn i {
+      font-size: 15px;
+    }
+
+    @media(max-width: 992px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 48px;
+      }
+    }
+
+    @media(max-width: 768px) {
+
+      .hero-title {
+        font-size: 38px;
+      }
+
+      .hero-subtitle {
+        font-size: 17px;
+      }
+
+      .service-card {
+        min-height: 360px;
+        padding: 35px;
+      }
+
+      .service-card h2 {
+        font-size: 30px;
+      }
+
+      .service-card p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero-section">
+
+    <div class="hero-wrapper">
+
+      <h1 class="hero-title">
+        Welcome To <span>DriveCore</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Fast, reliable and professional vehicle breakdown assistance system.
+      </p>
+
+      <div class="cards">
+
+        <!-- Mechanic Card -->
+        <div class="service-card">
+
+          <div class="card-content">
+
+            <div class="icon-box">
+              <i class="fa fa-wrench"></i>
+            </div>
+
+            <h2>Join As Mechanic</h2>
+
+            <p>
+              Register as a professional mechanic and connect with customers who need urgent vehicle assistance.
+            </p>
+
+            <a class="btn" href="/mechanics">
+              Start Now
+              <i class="fa fa-arrow-right"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Customer Card -->
+        <div class="service-card">
+
+          <div class="card-content">
+
+            <div class="icon-box">
+              <i class="fa fa-car"></i>
+            </div>
+
+            <h2>Need Help?</h2>
+
+            <p>
+              Find trusted mechanics near you for towing, flat tire, battery jump start and on-site repair services.
+            </p>
+
+            <a class="btn" href="/customer">
+              Get Assistance
+              <i class="fa fa-arrow-right"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+
+</html>

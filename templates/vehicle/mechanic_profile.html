@@ -1,0 +1,201 @@
+{% extends 'vehicle/mechanicbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .mechanic-profile-page {
+        padding: 38px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .profile-card {
+        max-width: 760px;
+        margin: 0 auto;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.38);
+        overflow: hidden;
+    }
+
+    .profile-header {
+        padding: 36px;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(29,78,216,0.12));
+        border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .profile-image {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #3b82f6;
+        box-shadow: 0 18px 38px rgba(59,130,246,0.32);
+        background: #020817;
+    }
+
+    .profile-title {
+        margin: 18px 0 6px;
+        font-size: 30px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .profile-subtitle {
+        margin: 0;
+        color: #60a5fa;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .profile-body {
+        padding: 32px 36px;
+    }
+
+    .info-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+    .info-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .info-icon i {
+        color: #ffffff;
+        font-size: 18px;
+    }
+
+    .info-content label {
+        display: block;
+        color: #94a3b8;
+        font-size: 13px;
+        margin-bottom: 4px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .info-content h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .profile-actions {
+        padding: 0 36px 36px;
+        text-align: center;
+    }
+
+    .edit-btn {
+        display: inline-block;
+        padding: 14px 34px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 800;
+        box-shadow: 0 14px 30px rgba(59,130,246,0.35);
+        transition: 0.25s ease;
+    }
+
+    .edit-btn:hover {
+        transform: translateY(-2px);
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .mechanic-profile-page {
+            padding: 22px;
+        }
+
+        .profile-header,
+        .profile-body,
+        .profile-actions {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+</style>
+
+<div class="mechanic-profile-page">
+    <div class="profile-card">
+
+        <div class="profile-header">
+            <img class="profile-image" src="{% static mechanic.profile_pic.url %}" alt="Mechanic Profile">
+            <h2 class="profile-title">{{ mechanic }}</h2>
+            <p class="profile-subtitle">DriveCore Mechanic</p>
+        </div>
+
+        <div class="profile-body">
+            <div class="info-row">
+                <div class="info-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="info-content">
+                    <label>Name</label>
+                    <h3>{{ mechanic }}</h3>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="info-content">
+                    <label>Mobile</label>
+                    <h3>{{ mechanic.mobile }}</h3>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="info-content">
+                    <label>Skill</label>
+                    <h3>{{ mechanic.skill }}</h3>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-content">
+                    <label>Address</label>
+                    <h3>{{ mechanic.address }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a href="/edit-mechanic-profile" class="edit-btn">
+                Edit Profile
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

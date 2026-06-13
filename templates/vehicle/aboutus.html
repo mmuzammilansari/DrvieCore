@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <title>About Us | DriveCore</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .about-hero {
+      min-height: 55vh;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #081225 45%, #0B1E45 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 70px;
+      position: relative;
+    }
+
+    .about-hero {
+      padding: 130px 20px 70px;
+    }
+
+    .about-hero::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: rgba(37, 99, 235, 0.18);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -120px;
+      right: -100px;
+    }
+
+    .about-hero h1 {
+      font-size: 72px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.756);
+    }
+
+    .about-hero h1 span {
+      background: linear-gradient(to right, #60A5FA, #2563EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .about-hero p {
+      color: #CBD5E1;
+      font-size: 20px;
+      max-width: 720px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      line-height: 1.8;
+    }
+
+    .about-section {
+      padding: 90px 0;
+      background:
+        linear-gradient(135deg, #020617 0%, #081225 40%, #0B1E45 100%);
+    }
+
+    .about-card {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      border-radius: 30px;
+      padding: 45px;
+      margin-bottom: 35px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(18px);
+      transition: 0.3s ease;
+    }
+
+    .about-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96, 165, 250, 0.45);
+    }
+
+    .about-card h2 {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #60A5FA;
+    }
+
+    .about-card p {
+      color: #CBD5E1;
+      line-height: 1.9;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .about-card ul {
+      padding-left: 20px;
+      margin-top: 15px;
+    }
+
+    .about-card ul li {
+      margin-bottom: 14px;
+      color: #CBD5E1;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .highlight {
+      color: #60A5FA;
+      font-weight: 700;
+    }
+
+    .home-btn {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .home-btn a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 16px 38px;
+      border-radius: 50px;
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      transition: 0.3s ease;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.35);
+    }
+
+    .home-btn a:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    @media(max-width: 768px) {
+
+      .about-hero h1 {
+        font-size: 44px;
+      }
+
+      .about-hero p {
+        font-size: 16px;
+      }
+
+      .about-card {
+        padding: 30px;
+      }
+
+      .about-card h2 {
+        font-size: 26px;
+      }
+
+      .about-card p,
+      .about-card ul li {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <section class="about-hero">
+    <div>
+      <h1>About <span>DriveCore</span></h1>
+
+      <p>
+        Your trusted partner for fast, reliable and technology-driven vehicle
+        breakdown assistance services.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container">
+
+      <div class="about-card">
+        <h2>Who We Are</h2>
+
+        <p>
+          At <span class="highlight">DriveCore</span>, we are committed to
+          helping drivers during unexpected vehicle breakdowns. Our platform
+          connects customers with trusted mechanics and emergency support
+          services using modern technology and a user-friendly experience.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h2>Our Mission</h2>
+
+        <p>
+          Our mission is to deliver reliable, fast and secure breakdown
+          assistance while ensuring convenience, safety and peace of mind for
+          every customer on the road.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h2>Why Choose DriveCore?</h2>
+
+        <ul>
+          <li><span class="highlight">24/7 Assistance:</span> Fast emergency vehicle support anytime.</li>
+
+          <li><span class="highlight">Trusted Mechanics:</span> Verified professionals near your location.</li>
+
+          <li><span class="highlight">Modern Technology:</span> Efficient and user-friendly breakdown management system.
+          </li>
+
+          <li><span class="highlight">Reliable Service:</span> Quick response and customer-focused solutions.</li>
+
+          <li><span class="highlight">Innovation:</span> Continuous improvements using smart technology.</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h2>Data Privacy & Security</h2>
+
+        <ul>
+          <li><span class="highlight">Secure Data Handling:</span> Industry-standard protection for user information.
+          </li>
+
+          <li><span class="highlight">Transparency:</span> Clear and trusted privacy practices.</li>
+
+          <li><span class="highlight">User Control:</span> Users can manage and update their information anytime.</li>
+
+          <li><span class="highlight">Privacy First:</span> We never sell or misuse user data.</li>
+
+          <li><span class="highlight">Compliance:</span> Following modern data protection standards.</li>
+        </ul>
+      </div>
+
+      <div class="home-btn">
+        <a href="/">Back To Home</a>
+      </div>
+
+    </div>
+  </section>
+
+  {% include "vehicle/footer.html" %}
+
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <title>Services | DriveCore</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .service-hero {
+      min-height: 55vh;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #081225 45%, #0B1E45 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 70px;
+      position: relative;
+    }
+
+    .service-hero::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: rgba(37, 99, 235, 0.18);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -120px;
+      right: -100px;
+    }
+
+    .service-hero h1 {
+      font-size: 72px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.756);
+    }
+
+    .service-hero h1 span {
+      background: linear-gradient(to right, #60A5FA, #2563EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .service-hero p {
+      color: #CBD5E1;
+      font-size: 20px;
+      max-width: 760px;
+      margin: auto;
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    .services-section {
+      padding: 90px 0;
+      background:
+        linear-gradient(135deg, #020617 0%, #081225 40%, #0B1E45 100%);
+    }
+
+    .service-card {
+      background: linear-gradient(135deg,
+          rgba(37, 99, 235, 0.18),
+          rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      border-radius: 30px;
+      padding: 40px;
+      margin-bottom: 35px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(18px);
+      transition: 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96, 165, 250, 0.45);
+    }
+
+    .service-icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      font-size: 34px;
+      color: #60A5FA;
+      box-shadow: 0 15px 35px rgba(37,99,235,0.28);
+    }
+
+    .service-card h2 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #60A5FA;
+    }
+
+    .service-card p {
+      color: #CBD5E1;
+      line-height: 1.9;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .home-btn {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .home-btn a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 16px 38px;
+      border-radius: 50px;
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      transition: 0.3s ease;
+      box-shadow: 0 15px 35px rgba(37,99,235,0.35);
+    }
+
+    .home-btn a:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    @media(max-width: 768px) {
+
+      .service-hero h1 {
+        font-size: 44px;
+      }
+
+      .service-hero p {
+        font-size: 16px;
+      }
+
+      .service-card {
+        padding: 30px;
+      }
+
+      .service-card h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <section class="service-hero">
+    <div>
+      <h1>Our <span>Services</span></h1>
+
+      <p>
+        Reliable, fast and technology-driven vehicle breakdown assistance
+        services designed to keep you safe and moving.
+      </p>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container">
+
+      <div class="service-card">
+        <div class="service-icon">🚨</div>
+
+        <h2>Emergency Assistance</h2>
+
+        <p>
+          Request instant help during breakdown situations including towing,
+          jump-starts, flat tire replacement and emergency roadside support.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+
+        <h2>Vehicle Diagnosis</h2>
+
+        <p>
+          Get insights about common vehicle issues including battery health,
+          engine problems and other technical alerts through smart diagnosis.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+
+        <h2>Trusted Mechanic Network</h2>
+
+        <p>
+          Connect with verified mechanics and professional service providers
+          near your location for fast and reliable support.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+
+        <h2>User-Friendly Platform</h2>
+
+        <p>
+          Simple and modern interface allowing customers to request help,
+          track services and communicate with mechanics in real-time.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛰️</div>
+
+        <h2>Live Tracking & Safety</h2>
+
+        <p>
+          Monitor service provider location in real-time and stay updated
+          with estimated arrival details for better safety and convenience.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⭐</div>
+
+        <h2>Premium Membership Plans</h2>
+
+        <p>
+          Enjoy premium benefits including priority support, reduced service
+          charges and exclusive breakdown assistance features.
+        </p>
+      </div>
+
+      <div class="home-btn">
+        <a href="/">Back To Home</a>
+      </div>
+
+    </div>
+  </section>
+
+  {% include "vehicle/footer.html" %}
+
+</body>
+
+</html>

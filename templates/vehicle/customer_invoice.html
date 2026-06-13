@@ -1,0 +1,144 @@
+{% extends 'vehicle/customerbase.html' %}
+{% block content %}
+
+<style>
+    .dc-page {
+        padding: 34px;
+        min-height: calc(100vh - 70px);
+        background: linear-gradient(135deg, #020817, #0b1f45, #123f91);
+        color: #ffffff;
+    }
+
+    .dc-header {
+        margin-bottom: 26px;
+    }
+
+    .dc-header h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .dc-header span {
+        color: #3b82f6;
+    }
+
+    .dc-header p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .dc-table-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        overflow: hidden;
+    }
+
+    .dc-table-title {
+        padding: 22px 26px;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .dc-table-title h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .dc-table-wrap {
+        overflow-x: auto;
+    }
+
+    .dc-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .dc-table th {
+        background: rgba(37, 99, 235, 0.18);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .dc-table td {
+        padding: 15px 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+    }
+
+    .dc-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .cost-badge {
+        display: inline-block;
+        padding: 7px 13px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.16);
+        color: #93c5fd;
+        font-weight: 800;
+        border: 1px solid rgba(96, 165, 250, 0.28);
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="dc-page">
+
+    <div class="dc-header">
+        <h2>Approved <span>Service Costs</span></h2>
+        <p>View your approved vehicle service requests with final cost details.</p>
+    </div>
+
+    <div class="dc-table-card">
+        <div class="dc-table-title">
+            <h3>Approved Requests With Cost</h3>
+        </div>
+
+        <div class="dc-table-wrap">
+            <table class="dc-table">
+                <thead>
+                    <tr>
+                        <th>Vehicle Name</th>
+                        <th>Vehicle Number</th>
+                        <th>Problem Description</th>
+                        <th>Enquiry Date</th>
+                        <th>Total Cost</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for enq in enquiries %}
+                    <tr>
+                        <td>{{ enq.vehicle_name }}</td>
+                        <td>{{ enq.vehicle_no }}</td>
+                        <td>{{ enq.problem_description }}</td>
+                        <td>{{ enq.date }}</td>
+                        <td><span class="cost-badge">Rs. {{ enq.cost }}</span></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="empty-row">No approved requests found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

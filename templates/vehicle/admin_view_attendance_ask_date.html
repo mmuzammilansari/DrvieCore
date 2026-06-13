@@ -1,0 +1,99 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+    .attendance-check-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .attendance-form-card {
+        max-width: 620px;
+        margin: 70px auto 0;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 26px;
+        box-shadow: 0 22px 55px rgba(0,0,0,0.38);
+        overflow: hidden;
+    }
+
+    .attendance-form-header {
+        padding: 26px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        text-align: center;
+    }
+
+    .attendance-form-header h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .attendance-form-header p {
+        margin: 8px 0 0;
+        color: #dbeafe;
+        font-size: 14px;
+    }
+
+    .attendance-form-body {
+        padding: 34px;
+    }
+
+    .attendance-form-body input {
+        width: 100%;
+        padding: 15px 18px;
+        border: 1px solid #334155;
+        background: #020817;
+        color: #ffffff;
+        border-radius: 14px;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .attendance-form-body input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+    }
+
+    .btnSubmit {
+        width: 100%;
+        margin-top: 20px;
+        padding: 15px;
+        border: none;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 14px 30px rgba(59, 130, 246, 0.35);
+    }
+
+    .btnSubmit:hover {
+        opacity: 0.94;
+        transform: translateY(-1px);
+    }
+</style>
+
+<div class="attendance-check-page">
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <div class="attendance-form-card">
+            <div class="attendance-form-header">
+                <h2>Check Mechanic Attendance</h2>
+                <p>Enter a date to view attendance records</p>
+            </div>
+
+            <div class="attendance-form-body">
+                {% render_field form.date placeholder="Enter date mm/dd/yyyy" %}
+                <button type="submit" class="btnSubmit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

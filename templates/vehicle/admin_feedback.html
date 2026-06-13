@@ -1,0 +1,105 @@
+{% extends 'vehicle/adminbase.html' %}
+
+{% block content %}
+
+<style>
+  .feedback-page {
+    padding: 34px;
+    min-height: calc(100vh - 70px);
+    color: #ffffff;
+  }
+
+  .feedback-header {
+    margin-bottom: 28px;
+  }
+
+  .feedback-header h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 900;
+    color: #ffffff;
+  }
+
+  .feedback-header span {
+    color: #3b82f6;
+  }
+
+  .feedback-header p {
+    margin-top: 8px;
+    color: #cbd5e1;
+    font-size: 15px;
+  }
+
+  .feedback-card {
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    border-radius: 22px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.28);
+    position: relative;
+  }
+
+  .feedback-meta {
+    color: #60a5fa;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .feedback-message {
+    color: #e5e7eb;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    color: #94a3b8;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .closebtn:hover {
+    color: #ffffff;
+  }
+
+  .empty-feedback {
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    border-radius: 22px;
+    padding: 28px;
+    color: #94a3b8;
+    text-align: center;
+  }
+</style>
+
+<div class="feedback-page">
+
+  <div class="feedback-header">
+    <h2>Drive<span>Core</span> Feedback</h2>
+    <p>Feedback sent by customers and mechanics</p>
+  </div>
+
+  {% for f in feedback %}
+  <div class="feedback-card">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+    <div class="feedback-meta">
+      {{ f.date }} &nbsp; | &nbsp; By: {{ f.by }}
+    </div>
+
+    <div class="feedback-message">
+      {{ f.message }}
+    </div>
+  </div>
+  {% empty %}
+  <div class="empty-feedback">
+    No feedback found
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock content %}

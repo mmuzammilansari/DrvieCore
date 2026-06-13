@@ -1,0 +1,139 @@
+{% extends 'vehicle/adminbase.html' %}
+{% block content %}
+
+<style>
+    .cost-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .cost-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        overflow: hidden;
+    }
+
+    .cost-header {
+        padding: 24px 28px;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .cost-header h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 900;
+    }
+
+    .cost-header span {
+        color: #3b82f6;
+    }
+
+    .cost-table-wrap {
+        overflow-x: auto;
+    }
+
+    .cost-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .cost-table th {
+        background: rgba(37, 99, 235, 0.22);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .cost-table td {
+        padding: 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+    }
+
+    .cost-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .cost-value {
+        color: #60a5fa;
+        font-weight: 800;
+    }
+
+    .edit-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none !important;
+        font-size: 18px;
+        box-shadow: 0 10px 22px rgba(59, 130, 246, 0.28);
+    }
+
+    .edit-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="cost-page">
+
+    <div class="cost-card">
+        <div class="cost-header">
+            <h3>Service <span>Cost</span></h3>
+        </div>
+
+        <div class="cost-table-wrap">
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Vehicle Name</th>
+                        <th>Problem Description</th>
+                        <th>Cost</th>
+                        <th>Update Cost</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for c,r in data %}
+                    <tr>
+                        <td>{{ c.get_name }}</td>
+                        <td>{{ r.vehicle_name }}</td>
+                        <td>{{ r.problem_description }}</td>
+                        <td class="cost-value">Rs. {{ r.cost }}</td>
+                        <td>
+                            <a class="edit-btn" href="{% url 'update-cost' r.id %}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="empty-row">No service cost records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

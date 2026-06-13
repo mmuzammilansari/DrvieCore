@@ -1,0 +1,51 @@
+﻿[
+{
+  "model": "vehicle.customer",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "profile_pic": "profile_pic/CustomerProfilePic/logo_drive_core.png",
+    "address": "karachi",
+    "mobile": "03410124412"
+  }
+},
+{
+  "model": "vehicle.mechanic",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "profile_pic": "profile_pic/MechanicProfilePic/mechanic.png",
+    "address": "karachi",
+    "mobile": "0345698712",
+    "skill": "5 year experience in mechanic line",
+    "salary": 25000,
+    "status": true
+  }
+},
+{
+  "model": "vehicle.request",
+  "pk": 1,
+  "fields": {
+    "category": "two wheeler with gear",
+    "vehicle_no": 456,
+    "vehicle_name": "COURE",
+    "vehicle_model": "2016",
+    "vehicle_brand": "Daihatsu",
+    "problem_description": "heat up problem",
+    "date": "2026-06-13",
+    "cost": 5000,
+    "customer": 1,
+    "mechanic": 1,
+    "status": "Released"
+  }
+},
+{
+  "model": "vehicle.attendance",
+  "pk": 1,
+  "fields": {
+    "mechanic": 1,
+    "date": "2026-06-13",
+    "present_status": "Present"
+  }
+}
+]

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <title>DriveCore</title>
+  <link rel="icon" href="{% static 'images/logo/png/iconlogo.png' %}" type="image/x-icon" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.40), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.25), transparent 35%),
+        linear-gradient(135deg, #020617 0%, #081225 38%, #0B1E45 72%, #123A92 100%);
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      background: rgba(37, 99, 235, 0.18);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -160px;
+      right: -120px;
+    }
+
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: rgba(96, 165, 250, 0.16);
+      filter: blur(120px);
+      border-radius: 50%;
+      bottom: -130px;
+      left: -100px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 74px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(to right, #60A5FA, #2563EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text h2 {
+      font-size: 34px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: #DBEAFE;
+    }
+
+    .hero-text .tagline {
+      font-size: 18px;
+      color: #60A5FA;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #CBD5E1;
+      max-width: 620px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      text-decoration: none;
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .hero-btn.primary {
+      background: linear-gradient(to right, #2563EB, #3B82F6);
+      color: white;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.38);
+    }
+
+    .hero-btn.outline {
+      border: 1px solid rgba(96, 165, 250, 0.55);
+      color: #DBEAFE;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .hero-btn.outline:hover {
+      background: white;
+      color: #020617;
+    }
+
+    .hero-image-box {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+    }
+
+    .hero-image-card {
+      background: linear-gradient(135deg, rgba(37,99,235,0.22), rgba(15,23,42,0.92));
+      border: 1px solid rgba(96,165,250,0.28);
+      border-radius: 34px;
+      padding: 35px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      filter: drop-shadow(0 30px 45px rgba(37,99,235,0.35));
+      animation: floatCar 4s ease-in-out infinite;
+    }
+
+    @keyframes floatCar {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    .info-strip {
+      background: linear-gradient(135deg, #020617, #0B1E45);
+      padding: 35px 0;
+      border-top: 1px solid rgba(96,165,250,0.18);
+      border-bottom: 1px solid rgba(96,165,250,0.18);
+    }
+
+    .info-box {
+      text-align: center;
+      padding: 25px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(96,165,250,0.20);
+      transition: 0.3s ease;
+    }
+
+    .info-box:hover {
+      transform: translateY(-8px);
+      background: rgba(37,99,235,0.18);
+    }
+
+    .info-box h3 {
+      font-size: 28px;
+      font-weight: 900;
+      color: #60A5FA;
+      margin-bottom: 8px;
+    }
+
+    .info-box p {
+      color: #CBD5E1;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    @media(max-width: 992px) {
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-text h1 {
+        font-size: 54px;
+      }
+
+      .hero-text h2 {
+        font-size: 26px;
+      }
+
+      .hero-image-box {
+        margin-top: 45px;
+      }
+    }
+
+    @media(max-width: 576px) {
+      .hero-section {
+        padding: 60px 0;
+      }
+
+      .hero-text h1 {
+        font-size: 42px;
+      }
+
+      .hero-text h2 {
+        font-size: 22px;
+      }
+
+      .hero-text p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <section class="hero-section">
+    <div class="container hero-content">
+      <div class="row align-items-center">
+
+        <div class="col-lg-6">
+          <div class="hero-text">
+            <h1 class="animate__animated animate__fadeInLeft">
+              Welcome To <span>DriveCore</span>
+            </h1>
+
+            <h2 class="animate__animated animate__fadeInLeft">
+              Vehicle Breakdown Assistance
+            </h2>
+
+            <div class="tagline animate__animated animate__fadeInLeft">
+              We Keep You Moving
+            </div>
+
+            <p class="animate__animated animate__fadeInLeft">
+              Experience fast, reliable and professional vehicle breakdown support.
+              DriveCore connects customers with trusted mechanics for emergency
+              repair, towing, flat tire and battery assistance.
+            </p>
+
+            <div class="hero-buttons animate__animated animate__fadeInLeft">
+              <a href="#MoreInfo" class="hero-btn primary">Explore Services</a>
+              <a href="/contactus" class="hero-btn outline">Contact Us</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="hero-image-box animate__animated animate__fadeInRight">
+            <div class="hero-image-card">
+              <img src="{% static 'images/car.png' %}" alt="DriveCore Car">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="info-strip">
+    <div class="container">
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="info-box">
+            <h3>24/7</h3>
+            <p>Emergency vehicle assistance</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="info-box">
+            <h3>Fast</h3>
+            <p>Quick mechanic connection</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="info-box">
+            <h3>Trusted</h3>
+            <p>Reliable repair support</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="MoreInfo">
+    {% include "vehicle/customer_mechanic_cards.html" %}
+  </div>
+
+  {% include "vehicle/footer.html" %}
+
+</body>
+
+</html>

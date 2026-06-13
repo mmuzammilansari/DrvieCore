@@ -1,0 +1,165 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+    .dc-form-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .dc-form-card {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 34px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+
+    .dc-form-card h3 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        font-weight: 900;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .dc-form-card p {
+        margin: 0 0 28px;
+        text-align: center;
+        color: #94a3b8;
+    }
+
+    .dc-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .dc-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dc-field.full {
+        grid-column: span 2;
+    }
+
+    .dc-field label {
+        margin-bottom: 8px;
+        color: #cbd5e1;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .dc-field input,
+    .dc-field select,
+    .dc-field textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #334155;
+        background: #020817;
+        color: #ffffff;
+        border-radius: 14px;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .dc-field input:focus,
+    .dc-field select:focus,
+    .dc-field textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
+    }
+
+    .dc-submit {
+        width: 100%;
+        margin-top: 26px;
+        padding: 15px;
+        border: none;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 14px 30px rgba(59,130,246,0.32);
+    }
+
+    .dc-submit:hover {
+        opacity: 0.94;
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+        .dc-form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .dc-field.full {
+            grid-column: span 1;
+        }
+
+        .dc-form-page {
+            padding: 22px;
+        }
+    }
+</style>
+
+<div class="dc-form-page">
+    <form method="post" enctype="multipart/form-data" class="dc-form-card">
+        {% csrf_token %}
+
+        <h3>Update Mechanic</h3>
+        <p>Edit mechanic details for DriveCore roadside support operations.</p>
+
+        <div class="dc-form-grid">
+            <div class="dc-field">
+                <label>First Name</label>
+                {% render_field userForm.first_name placeholder="First Name" %}
+            </div>
+
+            <div class="dc-field">
+                <label>Last Name</label>
+                {% render_field userForm.last_name placeholder="Last Name" %}
+            </div>
+
+            <div class="dc-field">
+                <label>Mobile</label>
+                {% render_field mechanicForm.mobile placeholder="Mobile" %}
+            </div>
+
+            <div class="dc-field">
+                <label>Skills</label>
+                {% render_field mechanicForm.skill placeholder="Skills" %}
+            </div>
+
+            <div class="dc-field full">
+                <label>Address</label>
+                {% render_field mechanicForm.address placeholder="Address" %}
+            </div>
+
+            <div class="dc-field">
+                <label>Username</label>
+                {% render_field userForm.username placeholder="Username" %}
+            </div>
+
+            <div class="dc-field">
+                <label>Password</label>
+                {% render_field userForm.password placeholder="Password" %}
+            </div>
+
+            <div class="dc-field full">
+                <label>Profile Picture</label>
+                {% render_field mechanicForm.profile_pic %}
+            </div>
+        </div>
+
+        <button type="submit" class="dc-submit">Update Mechanic</button>
+    </form>
+</div>
+
+{% endblock content %}

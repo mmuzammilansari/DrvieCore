@@ -1,0 +1,168 @@
+{% extends 'vehicle/adminbase.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .mechanic-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .mechanic-header {
+        margin-bottom: 26px;
+    }
+
+    .mechanic-header h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .mechanic-header span {
+        color: #3b82f6;
+    }
+
+    .mechanic-header p {
+        margin-top: 8px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    .mechanic-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .mechanic-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .mechanic-table th {
+        background: rgba(37, 99, 235, 0.22);
+        color: #bfdbfe;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .mechanic-table td {
+        padding: 15px 16px;
+        color: #e5e7eb;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .mechanic-table tr:hover {
+        background: rgba(59, 130, 246, 0.08);
+    }
+
+    .profile-img {
+        height: 46px;
+        width: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #3b82f6;
+        background: #020817;
+    }
+
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    .edit-btn {
+        background: rgba(59, 130, 246, 0.18);
+        color: #60a5fa;
+        border: 1px solid rgba(96, 165, 250, 0.35);
+    }
+
+    .delete-btn {
+        background: rgba(239, 68, 68, 0.16);
+        color: #f87171;
+        border: 1px solid rgba(248, 113, 113, 0.35);
+    }
+
+    .empty-row {
+        text-align: center;
+        color: #94a3b8;
+        padding: 28px;
+    }
+</style>
+
+<div class="mechanic-page">
+
+    <div class="mechanic-header">
+        <h2>DriveCore <span>Mechanics</span></h2>
+        <p>Manage registered mechanics, skills, salary, and profile details.</p>
+    </div>
+
+    <div class="mechanic-card">
+        <div class="table-responsive">
+            <table class="mechanic-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Profile Picture</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Skills</th>
+                        <th>Salary</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for m in mechanics %}
+                    <tr>
+                        <td>{{ m.get_name }}</td>
+                        <td>
+                            <img src="/static/{{ m.profile_pic }}" alt="Mechanic image" class="profile-img">
+                        </td>
+                        <td>{{ m.mobile }}</td>
+                        <td>{{ m.address }}</td>
+                        <td>{{ m.skill }}</td>
+                        <td>Rs. {{ m.salary }}</td>
+                        <td>
+                            <a class="action-btn edit-btn" href="{% url 'update-mechanic' m.id %}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="action-btn delete-btn" href="{% url 'delete-mechanic' m.id %}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="empty-row">No mechanics found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

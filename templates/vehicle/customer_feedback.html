@@ -1,0 +1,107 @@
+{% extends 'vehicle/customerbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+  .feedback-page {
+    padding: 36px;
+    min-height: calc(100vh - 70px);
+    color: #ffffff;
+  }
+
+  .feedback-card {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 36px;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+  }
+
+  .feedback-card h3 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .feedback-card h3 span {
+    color: #3b82f6;
+  }
+
+  .feedback-card p {
+    margin: 0 0 28px;
+    text-align: center;
+    color: #cbd5e1;
+  }
+
+  .feedback-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #dbeafe;
+    font-weight: 700;
+  }
+
+  .feedback-card input[type="text"],
+  .feedback-card select,
+  .feedback-card input[type="number"],
+  .feedback-card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #334155;
+    background: #020817;
+    color: #ffffff;
+    border-radius: 14px;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .feedback-card input:focus,
+  .feedback-card textarea:focus,
+  .feedback-card select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+  }
+
+  .feedback-card input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(59, 130, 246, 0.35);
+  }
+
+  .feedback-card input[type="submit"]:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+  }
+</style>
+
+<div class="feedback-page">
+  <div class="feedback-card">
+    <h3>Send <span>Feedback</span></h3>
+    <p>Share your experience with DriveCore support team.</p>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <label for="by">Your Name</label>
+      {% render_field feedback.by class="form-control" placeholder="Enter your name" %}
+
+      <label for="message">Message</label>
+      {% render_field feedback.message class="form-control" placeholder="Write your feedback here..." %}
+
+      <input type="submit" value="Send Feedback">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

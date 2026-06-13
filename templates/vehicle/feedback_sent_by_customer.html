@@ -1,0 +1,89 @@
+{% extends 'vehicle/customerbase.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .success-wrap {
+        min-height: calc(100vh - 90px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .success-card {
+        width: 100%;
+        max-width: 460px;
+        text-align: center;
+        padding: 42px 34px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 26px;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+        color: #ffffff;
+    }
+
+    .success-card img {
+        width: 72px;
+        margin-bottom: 22px;
+    }
+
+    .success-card h2 {
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 900;
+        margin-bottom: 12px;
+    }
+
+    .success-card p {
+        color: #cbd5e1;
+        margin-bottom: 28px;
+        font-size: 15px;
+    }
+
+    .success-actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .success-btn {
+        padding: 13px 20px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 800;
+        color: #ffffff;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        box-shadow: 0 14px 30px rgba(59, 130, 246, 0.28);
+    }
+
+    .success-btn.secondary {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(96, 165, 250, 0.35);
+        box-shadow: none;
+    }
+
+    .success-btn:hover {
+        color: #ffffff;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+</style>
+
+<div class="success-wrap">
+    <div class="success-card">
+        <img src="{% static 'images/success.png' %}" alt="Success">
+
+        <h2>Feedback Sent Successfully!</h2>
+        <p>Thank you for sharing your feedback with DriveCore.</p>
+
+        <div class="success-actions">
+            <a href="/customer-feedback" class="success-btn secondary">Send Another</a>
+            <a href="/customer-dashboard" class="success-btn">Go Home</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

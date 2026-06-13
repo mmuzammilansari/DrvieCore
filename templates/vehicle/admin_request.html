@@ -1,0 +1,145 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .request-page {
+        padding: 36px;
+        min-height: calc(100vh - 70px);
+        color: #ffffff;
+    }
+
+    .request-title h2 {
+        font-size: 30px;
+        font-weight: 900;
+        margin: 0;
+    }
+
+    .request-title span {
+        color: #3b82f6;
+    }
+
+    .request-title p {
+        color: #cbd5e1;
+        margin: 8px 0 28px;
+    }
+
+    .request-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(220px, 1fr));
+        gap: 22px;
+    }
+
+    .request-card {
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 24px;
+        padding: 30px;
+        min-height: 190px;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+        transition: 0.25s ease;
+    }
+
+    .request-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(96, 165, 250, 0.55);
+        box-shadow: 0 24px 55px rgba(37, 99, 235, 0.28);
+        color: white;
+        text-decoration: none;
+    }
+
+    .request-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+    }
+
+    .request-icon i,
+    .request-icon strong {
+        font-size: 26px;
+        color: white;
+    }
+
+    .request-card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .request-card p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 1100px) {
+        .request-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 700px) {
+        .request-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .request-page {
+            padding: 22px;
+        }
+    }
+</style>
+
+<div class="request-page">
+
+    <div class="request-title">
+        <h2>Service <span>Requests</span></h2>
+        <p>Manage DriveCore customer breakdown and repair requests.</p>
+    </div>
+
+    <div class="request-grid">
+
+        <a href="/admin-view-request" class="request-card">
+            <div class="request-icon">
+                <i class="fas fa-eye"></i>
+            </div>
+            <h3>View All Requests</h3>
+            <p>Review all customer vehicle assistance requests.</p>
+        </a>
+
+        <a href="/admin-add-request" class="request-card">
+            <div class="request-icon">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <h3>Make Request</h3>
+            <p>Create a new service request from the admin panel.</p>
+        </a>
+
+        <a href="/admin-approve-request" class="request-card">
+            <div class="request-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Approve Request</h3>
+            <p>Approve pending requests and assign service action.</p>
+        </a>
+
+        <a href="/admin-view-service-cost" class="request-card">
+            <div class="request-icon">
+                <strong>Rs</strong>
+            </div>
+            <h3>Service Cost</h3>
+            <p>View and manage repair or assistance service costs.</p>
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock content %}
